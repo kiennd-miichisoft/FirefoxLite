@@ -45,7 +45,6 @@ public class DisconnectTest {
         // This applies across multiple Test classes, e.g. DisconnectTest can cause
         // TrackingProtectionWebViewCLientTest to fail, unless it clears StrictMode first.
         // (FocusApplicaiton is initialised before @Before methods are run.)
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().build());
     }
 
     // IMPORTANT NOTE - IF RUNNING TESTS USING ANDROID STUDIO:

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -168,12 +169,15 @@ public abstract class DefaultWebFragment extends LocaleAwareFragment {
      */
     public void loadUrl(@NonNull final String url) {
         final WebView webView = getWebView();
+        Log.d("TAG", "getWebView====================: " );
+
         if (webView != null) {
             if (SupportUtils.isUrl(url)) {
                 this.pendingUrl = null; // clear pending url
 
                 // in case of any unexpected path to here, to normalize URL in beta/release build
                 final String target = AppConstants.isDevBuild() ? url : SupportUtils.normalize(url);
+                Log.d("TAG", "loadUrl====================: "+target );
                 webView.loadUrl(target);
             } else if (AppConstants.isDevBuild()) {
                 // throw exception to highlight this issue, except release build.

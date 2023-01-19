@@ -298,9 +298,7 @@ public final class GlideExecutor extends ThreadPoolExecutor {
       if (Log.isLoggable(TAG, Log.ERROR)) {
         Log.e(TAG, "Failed to calculate accurate cpu count", t);
       }
-    } finally {
-      StrictMode.setThreadPolicy(originalPolicy);
-    }
+    } 
 
     int cpuCount = cpus != null ? cpus.length : 0;
     int availableProcessors = Math.max(1, Runtime.getRuntime().availableProcessors());
@@ -376,11 +374,6 @@ public final class GlideExecutor extends ThreadPoolExecutor {
               android.os.Process.THREAD_PRIORITY_BACKGROUND
               + android.os.Process.THREAD_PRIORITY_MORE_FAVORABLE);
           if (preventNetworkOperations) {
-            StrictMode.setThreadPolicy(
-                new ThreadPolicy.Builder()
-                    .detectNetwork()
-                    .penaltyDeath()
-                    .build());
           }
           try {
             super.run();

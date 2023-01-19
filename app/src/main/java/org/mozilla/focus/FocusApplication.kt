@@ -231,9 +231,6 @@ open class FocusApplication : LocaleAwareApplication(), LifecycleObserver {
             threadPolicyBuilder.penaltyLog().penaltyDialog()
         }
         vmPolicyBuilder.penaltyLog()
-
-        StrictMode.setThreadPolicy(threadPolicyBuilder.build())
-        StrictMode.setVmPolicy(vmPolicyBuilder.build())
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
